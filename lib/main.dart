@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/pages/day_schedule.dart';
 
 void main() {
   runApp(new MyApp());
@@ -76,13 +77,24 @@ class _MyHomePageState extends State<MyHomePage> {
     return ListView.builder(
       itemCount: 13,
       itemBuilder: (context, index) {
-        return CalendarEntry();
+        return GestureDetector(
+            onTap: () => openDaySchedule(), child: CalendarEntry(index));
       },
+    );
+  }
+
+  openDaySchedule() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => DaySchedule()),
     );
   }
 }
 
 class CalendarEntry extends StatelessWidget {
+  final int time;
+
+  const CalendarEntry({Key key, this.time}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -92,6 +104,7 @@ class CalendarEntry extends StatelessWidget {
             Container(
               //color: Color.fromARGB(255, 10, 010, 10),
               width: 95,
+              height: 40,
               child: Center(
                 child: Text(
                   "Seg",
@@ -103,6 +116,7 @@ class CalendarEntry extends StatelessWidget {
             Container(
               //color: Color.fromARGB(255, 10, 010, 10),
               width: 95,
+              height: 90,
               child: Text(
                 "10",
                 textAlign: TextAlign.center,
@@ -112,33 +126,39 @@ class CalendarEntry extends StatelessWidget {
             ),
           ],
         ),
-        Column(
-          children: [
-            Container(
-              height: 80,
-              width: 200,
-              child: Align(
-                alignment: Alignment.topLeft,
-                child: Text(
-                  "4 visitas",
-                  style: TextStyle(
-                      color: Color.fromARGB(255, 0, 0, 0), fontSize: 29),
+        Padding(
+          padding: const EdgeInsets.only(left: 50),
+          child: Column(
+            children: [
+              Container(
+                height: 40,
+                width: 200,
+                child: Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Text(
+                    "4 visitas",
+                    style: TextStyle(
+                        color: Color.fromARGB(255, 0, 0, 0), fontSize: 29),
+                  ),
                 ),
               ),
-            ),
-            Container(
-              height: 20,
-              width: 200,
-              child: Align(
-                alignment: Alignment.topLeft,
-                child: Text(
-                  "Total R\$ 600,00",
-                  style: TextStyle(
-                      color: Color.fromARGB(255, 0, 0, 0), fontSize: 17),
+              Container(
+                height: 90,
+                width: 200,
+                child: Align(
+                  alignment: Alignment.topLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 14.0),
+                    child: Text(
+                      "Total R\$ 600,00",
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 0, 0, 0), fontSize: 17),
+                    ),
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ],
     );
