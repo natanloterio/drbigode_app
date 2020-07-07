@@ -34,22 +34,28 @@ class _AppointmentDone extends State<AppointmentDone> {
           key: _formKey,
           child: Center(
             child: Container(
-                height: 240,
-                child: Column(
+                height: 340,
+                child: Stack(
+                  alignment: Alignment.center,
                   children: [
-                    Positioned(
-                      child: Text(
-                        "Atendimento Realizado!",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 20),
+                    Center(
+                      child: SvgPicture.asset(
+                        'assets/images/bg_office.svg',
                       ),
-                    ),
-                    SvgPicture.asset(
-                      'assets/images/bg_office.svg',
                     ),
                     Center(
                       child: SvgPicture.asset(
                         'assets/images/woman.svg',
+                      ),
+                    ),
+                    Positioned(
+                      top: 40,
+                      child: Center(
+                        child: Text(
+                          "Atendimento realizado!",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 20),
+                        ),
                       ),
                     ),
                   ],

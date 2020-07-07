@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_masked_text/flutter_masked_text.dart';
 import 'package:myapp/components/CustomButton.dart';
+import 'package:myapp/pages/appointment_done.dart';
 
 import 'day_schedule.dart';
 
@@ -133,17 +134,26 @@ class _ScheduleConfirmedDetails extends State<ScheduleConfirmedDetails> {
                 alignment: Alignment.bottomCenter,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16.0),
-                  child: CustomButton(title: 'Atendimento realizado'),
+                  child: CustomButton(
+                    title: 'Finalizar',
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => AppointmentDone()),
+                      );
+                    },
+                  ),
                 ),
               ),
-              GestureDetector(
-                  onTap: () => {},
-                  child: Text(
-                    "Sugerir novo horário",
-                    style: TextStyle(
-                      color: Color(0xff0191AE),
-                    ),
-                  ))
+              // GestureDetector(
+              //     onTap: () => {},
+              //     child: Text(
+              //       "Sugerir novo horário",
+              //       style: TextStyle(
+              //         color: Color(0xff0191AE),
+              //       ),
+              //     ))
             ],
           ),
         ),

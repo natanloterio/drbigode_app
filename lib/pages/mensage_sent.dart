@@ -34,19 +34,20 @@ class _MessageSent extends State<MessageSent> {
           key: _formKey,
           child: Center(
             child: Container(
-                height: 390,
+                height: 440,
                 child: Column(
                   children: [
-                    Positioned(
-                      child: Text(
-                        "Mensagem enviada!",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 20),
-                      ),
-                    ),
                     Stack(alignment: Alignment.center, children: [
                       Image.asset(
                         'assets/images/bg_mountains.png',
+                      ),
+                      Positioned(
+                        top: 80,
+                        child: Text(
+                          "Mensagem enviada!",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 20),
+                        ),
                       ),
                     ]),
                   ],
