@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_masked_text/flutter_masked_text.dart';
+import 'package:myapp/components/CustomButton.dart';
 
 import 'day_schedule.dart';
 
-class ScheduleDetails extends StatefulWidget {
+class ScheduleConfirmedDetails extends StatefulWidget {
   @override
-  _ScheduleDetails createState() => new _ScheduleDetails();
+  _ScheduleConfirmedDetails createState() => new _ScheduleConfirmedDetails();
 }
 
-class _ScheduleDetails extends State<ScheduleDetails> {
+class _ScheduleConfirmedDetails extends State<ScheduleConfirmedDetails> {
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -65,10 +66,11 @@ class _ScheduleDetails extends State<ScheduleDetails> {
               Row(
                 children: [
                   Container(
-                    width: 40,
+                    width: 60,
+                    height: 80,
                   ),
                   Container(
-                      width: 330,
+                      width: 280,
                       child: Title(
                           color: Color(0xff000000),
                           child: Text("Cássio Sperry")))
@@ -93,15 +95,18 @@ class _ScheduleDetails extends State<ScheduleDetails> {
               //Price
               Row(
                 children: [
-                  Container(
-                    width: 40,
-                    child: Icon(
-                      Icons.attach_money,
-                      color: Color(0xffc2c2c2),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 18.0),
+                    child: Container(
+                      width: 40,
+                      child: Icon(
+                        Icons.attach_money,
+                        color: Color(0xffc2c2c2),
+                      ),
                     ),
                   ),
                   Container(
-                      width: 330,
+                      width: 280,
                       child: TextFormField(
                         controller: lowPrice,
                         decoration: const InputDecoration(hintText: "0,00"),
@@ -128,20 +133,17 @@ class _ScheduleDetails extends State<ScheduleDetails> {
                 alignment: Alignment.bottomCenter,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16.0),
-                  child: RaisedButton(
-                    onPressed: () {
-                      // Validate will return true if the form is valid, or false if
-                      // the form is invalid.
-                      if (_formKey.currentState.validate()) {
-                        // Process data.
-                      }
-                    },
-                    child: Text('Enviar confirmação'),
-                  ),
+                  child: CustomButton(title: 'Atendimento realizado'),
                 ),
               ),
               GestureDetector(
-                  onTap: () => {}, child: Text("Sugerir novo horário"))
+                  onTap: () => {},
+                  child: Text(
+                    "Sugerir novo horário",
+                    style: TextStyle(
+                      color: Color(0xff0191AE),
+                    ),
+                  ))
             ],
           ),
         ),
@@ -151,7 +153,7 @@ class _ScheduleDetails extends State<ScheduleDetails> {
     openDaySchedule() {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => ScheduleDetails()),
+        MaterialPageRoute(builder: (context) => ScheduleConfirmedDetails()),
       );
     }
   }
@@ -170,18 +172,21 @@ class DetailLine extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 18.0),
+      padding: const EdgeInsets.only(bottom: 28.0),
       child: Row(
         children: [
-          Container(
-            width: 40,
-            child: Icon(
-              icon,
-              color: Color(0xffc2c2c2),
+          Padding(
+            padding: const EdgeInsets.only(right: 18.0),
+            child: Container(
+              width: 40,
+              child: Icon(
+                icon,
+                color: Color(0xffc2c2c2),
+              ),
             ),
           ),
           Container(
-              width: 330,
+              width: 300,
               child: Text(
                 text,
                 style: TextStyle(color: Color(0xffc2c2c2)),

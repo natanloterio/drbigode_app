@@ -78,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
       itemCount: 13,
       itemBuilder: (context, index) {
         return GestureDetector(
-            onTap: () => openDaySchedule(), child: CalendarEntry(index));
+            onTap: () => openDaySchedule(), child: CalendarEntry(time: index));
       },
     );
   }
@@ -118,7 +118,7 @@ class CalendarEntry extends StatelessWidget {
               width: 95,
               height: 90,
               child: Text(
-                "10",
+                "${time}",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     color: Color.fromARGB(255, 0, 0, 0), fontSize: 70),
